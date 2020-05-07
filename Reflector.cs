@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
@@ -144,6 +144,13 @@ namespace MyProgram
             return containerType.GetMethod(methodName,
                 BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly,
                 null, parameterTypes, null) != null;
+        }
+        
+        public static bool HasMethodReturnType(Type containerType, string methodName, Type[] parameterTypes, Type returnType)
+        {
+            return containerType.GetMethod(methodName,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly,
+                null, parameterTypes, null)?.ReturnType.Equals(returnType) ?? false;
         }
 
         public static bool IsDeclaredMethodVirtual(Type containerType, string methodName, Type[] parameterTypes)
