@@ -65,12 +65,12 @@ namespace MyProgram
                 BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static) != null;
         }
 
-        public static bool IsMemberStatic(Type containerType, string memberdName)
+        public static bool IsMemberStatic(Type containerType, string memberName)
         {
-            return containerType.GetMember(memberdName, 
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static) != null;
+            return containerType.GetMember(memberName, 
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).Length > 0;
         }
-
+        
         public static bool HasTypeConstructor(Type containerType, Type[] parameters)
         {
             return containerType.GetConstructor(
